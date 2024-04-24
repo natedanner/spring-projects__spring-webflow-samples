@@ -44,8 +44,8 @@ public class JpaBookingService implements BookingService, Serializable {
 	@SuppressWarnings("unchecked")
 	public List<Hotel> findHotels(SearchCriteria criteria, int firstResult, String orderBy, boolean ascending) {
 		String pattern = getSearchPattern(criteria);
-		orderBy = (orderBy != null) ? orderBy : "name";
-		String orderDirection = (ascending) ? " ASC" : " DESC";
+		orderBy = orderBy != null ? orderBy : "name";
+		String orderDirection = ascending ? " ASC" : " DESC";
 		return em
 				.createQuery(
 						"select h from Hotel h where lower(h.name) like :pattern or lower(h.city) like :pattern "
@@ -74,8 +74,7 @@ public class JpaBookingService implements BookingService, Serializable {
 	public Booking createBooking(Long hotelId, String username) {
 		Hotel hotel = em.find(Hotel.class, hotelId);
 		User user = findUser(username);
-		Booking booking = new Booking(hotel, user);
-		return booking;
+		return new Booking(hotel, user);
 	}
 
 	@Transactional

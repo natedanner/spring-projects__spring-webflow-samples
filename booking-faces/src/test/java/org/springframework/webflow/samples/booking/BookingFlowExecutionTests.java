@@ -76,8 +76,7 @@ public class BookingFlowExecutionTests extends AbstractXmlFlowExecutionTests {
 	hotel.setId(1L);
 	hotel.setName("Jameson Inn");
 	User user = new User("keith", "pass", "Keith Donald");
-	Booking booking = new Booking(hotel, user);
-	return booking;
+	return new Booking(hotel, user);
     }
 
 }

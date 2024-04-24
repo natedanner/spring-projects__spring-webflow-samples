@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PersonService {
 
-	private static List<Person> cache = new ArrayList<Person>();
+	private static List<Person> cache = new ArrayList<>();
 	
 	static {
 		cache.add(new Person(0L, "Jamie Carr"));
@@ -19,7 +19,7 @@ public class PersonService {
 	}
 	
 	public List<String> suggestNames(String text) {
-		List<String> results = new ArrayList<String>();
+		List<String> results = new ArrayList<>();
 		for (int i = 0; i < 10; i++) {
 			results.add(text + i);
 		}
@@ -27,7 +27,7 @@ public class PersonService {
 	}
 
 	public List<Person> suggestPeople(String text) {
-		List<Person> results = new ArrayList<Person>();
+		List<Person> results = new ArrayList<>();
 		for (Person p : cache) {
 			if (p.getName().toLowerCase().startsWith(text.toLowerCase())) {
 				results.add(p);

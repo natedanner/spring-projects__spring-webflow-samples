@@ -13,7 +13,7 @@ import org.springframework.util.StringUtils;
 @FacesConverter(value="personConverter")
 public class PersonConverter implements Converter {
 
-	private static List<Person> cache = new ArrayList<Person>();
+	private static List<Person> cache = new ArrayList<>();
 	
 	static {
 		cache.add(new Person(0L, "Jamie Carr"));
@@ -36,7 +36,7 @@ public class PersonConverter implements Converter {
 
 	public String getAsString(FacesContext context, UIComponent component, Object value) {
         if (value != null) {
-            return String.valueOf(((Person) value).getName());
+            return ((Person) value).getName();
         }
         return null;
 	}

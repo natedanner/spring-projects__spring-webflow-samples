@@ -38,7 +38,7 @@ public class MainFlowExecutionTests extends AbstractXmlFlowExecutionTests {
     }
 
     public void testStartMainFlow() {
-	List<Booking> bookings = new ArrayList<Booking>();
+	List<Booking> bookings = new ArrayList<>();
 	bookings.add(new Booking(new Hotel(), new User("keith", "password", "Keith Donald")));
 	EasyMock.expect(bookingService.findBookings("keith")).andReturn(bookings);
 	EasyMock.replay(bookingService);
@@ -73,7 +73,7 @@ public class MainFlowExecutionTests extends AbstractXmlFlowExecutionTests {
     public void testSelectHotel() {
 	setCurrentState("reviewHotels");
 
-	List<Hotel> hotels = new ArrayList<Hotel>();
+	List<Hotel> hotels = new ArrayList<>();
 	Hotel hotel = new Hotel();
 	hotel.setId(1L);
 	hotel.setName("Jameson Inn");
@@ -102,7 +102,7 @@ public class MainFlowExecutionTests extends AbstractXmlFlowExecutionTests {
 	Flow mockBookingFlow = new Flow("booking");
 	mockBookingFlow.setInputMapper(new Mapper() {
 	    public MappingResults map(Object source, Object target) {
-		assertEquals(new Long(1), ((AttributeMap) source).get("hotelId"));
+		assertEquals(Long.valueOf(1), ((AttributeMap) source).get("hotelId"));
 		return null;
 	    }
 	});
